@@ -1,5 +1,7 @@
 # ☁️ SkyCast – Weather Dashboard
 
+**🌐 Live demo: https://hanee2907.github.io/skycast-weather/**
+
 A weather and city dashboard made with plain **HTML, CSS and JavaScript**. No frameworks.
 
 The background colour and animations change with the weather:
