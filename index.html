@@ -11,9 +11,13 @@
 <body class="clear-day">
 
   <!-- Animated weather layer (sun, clouds, rain, snow) -->
-  <div id="sky">
+  <!-- Sun and moon sit at the top and scroll away with the page -->
+  <div id="sky-top">
     <div class="sun"></div>
     <div class="moon"></div>
+  </div>
+
+  <div id="sky">
     <div class="cloud cloud-1"></div>
     <div class="cloud cloud-2"></div>
     <div class="cloud cloud-3"></div>
@@ -34,7 +38,10 @@
         <button type="button" id="location-btn" class="btn btn-icon" title="Use my location">📍</button>
       </form>
 
-      <button id="unit-btn" class="btn unit-btn" title="Switch °C / °F">°C</button>
+      <div class="header-buttons">
+        <button id="sound-btn" class="btn btn-icon" title="Play weather sounds" aria-pressed="false">🔇</button>
+        <button id="unit-btn" class="btn unit-btn" title="Switch °C / °F">°C</button>
+      </div>
     </header>
 
     <!-- Recently searched cities -->
@@ -92,6 +99,51 @@
         <div class="card mini">
           <p class="label">🌇 Sunset</p>
           <p class="value" id="sunset">--</p>
+        </div>
+        <div class="card mini">
+          <p class="label">☔ Rain chance</p>
+          <p class="value" id="rain-today">--</p>
+        </div>
+        <div class="card mini">
+          <p class="label">🍃 Air quality</p>
+          <p class="value" id="aqi">--</p>
+          <p class="aqi-text" id="aqi-text"></p>
+        </div>
+      </section>
+
+      <!-- Smart tips: what to wear + best time to go out -->
+      <section class="tips">
+        <div class="card">
+          <h3>👗 What should I wear?</h3>
+          <p id="outfit-summary" class="tip-summary"></p>
+          <div id="outfit" class="outfit"></div>
+        </div>
+
+        <div class="card">
+          <h3>🚶 Best time to go outside</h3>
+          <p id="best-time" class="best-time">--</p>
+          <p id="best-time-why" class="muted"></p>
+          <div id="comfort-bars" class="comfort-bars"></div>
+          <p class="bars-note muted">Comfort score for the next 12 hours (taller = nicer)</p>
+        </div>
+      </section>
+
+      <!-- Fun extras: weather twin + time machine -->
+      <section class="tips">
+        <div class="card twin-card">
+          <h3>🌍 Weather twin</h3>
+          <p class="muted">Somewhere else on Earth with the same weather right now:</p>
+          <div id="twin" class="twin">
+            <p class="muted">Searching the planet...</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>⏳ Time machine</h3>
+          <p class="muted" id="past-date">This day last year</p>
+          <div id="past" class="past">
+            <p class="muted">Travelling back in time...</p>
+          </div>
         </div>
       </section>
 

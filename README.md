@@ -13,6 +13,15 @@ The background colour and animations change with the weather:
 - ⛈️ **Storm**: rain plus lightning flashes
 - ❄️ **Snow**: light sky with falling snowflakes
 
+## ✨ What makes it different
+
+- 🌍 **Weather twin**: finds a city on the other side of the world with almost the same weather as yours right now
+- ⏳ **Time machine**: shows the weather on this exact day last year and tells you if today is warmer or colder
+- 👗 **What should I wear?**: outfit tips based on how warm it feels, rain, wind and UV
+- 🚶 **Best time to go outside**: scores the next 12 hours for comfort and picks the nicest 2-hour window
+- 🔊 **Weather sounds**: rain, thunder, wind, birds by day and crickets at night, all generated in the browser with the Web Audio API (no sound files)
+- 🍃 **Air quality** with a colour-coded level
+
 ## Features
 
 - Search any city in the world
@@ -32,5 +41,6 @@ Download or clone this repo and open `index.html` in your browser. You don't nee
 
 - HTML5
 - CSS3 (glassmorphism cards, CSS animations, CSS variables)
-- JavaScript (`fetch`, `async/await`, `localStorage`)
-- [Open-Meteo API](https://open-meteo.com/): free weather data, no API key needed
+- JavaScript (`fetch`, `async/await`, `localStorage`, Web Audio API)
+- [Open-Meteo API](https://open-meteo.com/): free weather, air quality and historical data, no API key needed
+- [flagcdn.com](https://flagcdn.com/): country flag images
