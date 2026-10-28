@@ -15,6 +15,7 @@ The background colour and animations change with the weather:
 
 ## ✨ What makes it different
 
+- ☁️ **Meet Skye**: a friendly cloud mascot who changes with the weather. She wears sunglasses when it's sunny, holds an umbrella in the rain, shivers in a scarf when it snows and gets sleepy at night, and always has something to say
 - 🌍 **Weather twin**: finds a city on the other side of the world with almost the same weather as yours right now
 - ⏳ **Time machine**: shows the weather on this exact day last year and tells you if today is warmer or colder
 - 👗 **What should I wear?**: outfit tips based on how warm it feels, rain, wind and UV
@@ -41,6 +42,8 @@ Download or clone this repo and open `index.html` in your browser. You don't nee
 
 - HTML5
 - CSS3 (glassmorphism cards, CSS animations, CSS variables)
+- SVG for the logo and the Skye mascot
+- Fonts: [Fredoka](https://fonts.google.com/specimen/Fredoka) and [Nunito](https://fonts.google.com/specimen/Nunito)
 - JavaScript (`fetch`, `async/await`, `localStorage`, Web Audio API)
 - [Open-Meteo API](https://open-meteo.com/): free weather, air quality and historical data, no API key needed
 - [flagcdn.com](https://flagcdn.com/): country flag images

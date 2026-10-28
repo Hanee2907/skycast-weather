@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkyCast - Weather Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="clear-day">
@@ -30,11 +32,17 @@
 
     <!-- Header with search -->
     <header>
-      <h1 class="logo">☁️ SkyCast</h1>
+      <a href="./" class="logo" aria-label="SkyCast home">
+        <img src="favicon.svg" alt="" class="logo-icon">
+        <span class="logo-text">Sky<span>Cast</span></span>
+      </a>
 
       <form id="search-form" autocomplete="off">
-        <input type="text" id="city-input" placeholder="Search a city... e.g. London" aria-label="City name">
-        <button type="submit" class="btn">Search</button>
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input type="text" id="city-input" placeholder="Where do you want to look?" aria-label="City name">
+        </div>
+        <button type="submit" class="btn btn-main">Go!</button>
         <button type="button" id="location-btn" class="btn btn-icon" title="Use my location">📍</button>
       </form>
 
@@ -53,14 +61,14 @@
     <!-- Loading spinner -->
     <div id="loader" class="hidden">
       <div class="spinner"></div>
-      <p>Getting the weather...</p>
+      <p>Skye is checking the sky...</p>
     </div>
 
     <main id="dashboard" class="hidden">
 
       <!-- Big current weather card -->
       <section class="card current">
-        <div>
+        <div class="current-info">
           <h2 id="city-name">City</h2>
           <p id="date-time" class="muted">Date</p>
           <div class="temp-row">
@@ -68,44 +76,111 @@
             <span id="current-temp" class="big-temp">--°</span>
           </div>
           <p id="current-desc" class="desc">Clear sky</p>
-          <p class="muted">
-            H: <span id="temp-max">--</span> &nbsp; L: <span id="temp-min">--</span>
+          <p class="hi-lo">
+            <span class="pill">⬆ <span id="temp-max">--</span></span>
+            <span class="pill">⬇ <span id="temp-min">--</span></span>
           </p>
+        </div>
+
+        <!-- Skye the cloud: her face and outfit change with the weather -->
+        <div class="mascot">
+          <p id="mascot-says" class="speech">Hi! I'm Skye ☁️</p>
+          <svg class="skye" viewBox="0 0 220 170" aria-hidden="true">
+            <!-- umbrella (rain + storm) -->
+            <g class="umbrella">
+              <path d="M150 52 Q182 6 214 52 Z" fill="#ff8fab"/>
+              <path d="M166 52 Q174 30 182 52 M182 52 Q190 30 198 52" fill="none" stroke="#e05a80" stroke-width="2"/>
+              <path d="M182 52 V100 q0 8 -8 8" fill="none" stroke="#1f2d3d" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <!-- night cap -->
+            <g class="nightcap">
+              <path d="M78 38 Q110 -6 150 30 Q120 26 78 38 Z" fill="#818cf8"/>
+              <circle cx="152" cy="30" r="9" fill="#fff"/>
+            </g>
+            <!-- cloud body -->
+            <g class="body" fill="#ffffff">
+              <circle cx="70" cy="95" r="38"/>
+              <circle cx="112" cy="72" r="48"/>
+              <circle cx="152" cy="98" r="34"/>
+              <rect x="40" y="95" width="145" height="45" rx="22"/>
+            </g>
+            <!-- cheeks -->
+            <circle cx="78" cy="115" r="9" fill="#ff8fab" opacity="0.55"/>
+            <circle cx="148" cy="115" r="9" fill="#ff8fab" opacity="0.55"/>
+            <!-- eyes: open -->
+            <g class="eyes-open" fill="#1f2d3d">
+              <circle cx="95" cy="100" r="7"/>
+              <circle cx="131" cy="100" r="7"/>
+              <circle cx="97" cy="97" r="2.2" fill="#fff"/>
+              <circle cx="133" cy="97" r="2.2" fill="#fff"/>
+            </g>
+            <!-- eyes: sleepy -->
+            <g class="eyes-sleep" fill="none" stroke="#1f2d3d" stroke-width="4" stroke-linecap="round">
+              <path d="M87 100 q8 7 16 0"/>
+              <path d="M123 100 q8 7 16 0"/>
+            </g>
+            <!-- sunglasses -->
+            <g class="glasses" fill="#1f2d3d">
+              <rect x="80" y="90" width="30" height="20" rx="9"/>
+              <rect x="116" y="90" width="30" height="20" rx="9"/>
+              <rect x="108" y="95" width="10" height="4" rx="2"/>
+              <rect x="86" y="94" width="8" height="4" rx="2" fill="#fff" opacity="0.6"/>
+            </g>
+            <!-- mouths -->
+            <path class="mouth-happy" d="M103 118 q10 11 20 0" fill="none" stroke="#1f2d3d" stroke-width="4" stroke-linecap="round"/>
+            <path class="mouth-sad" d="M103 124 q10 -9 20 0" fill="none" stroke="#1f2d3d" stroke-width="4" stroke-linecap="round"/>
+            <ellipse class="mouth-o" cx="113" cy="122" rx="6" ry="7" fill="#1f2d3d"/>
+            <!-- scarf (snow) -->
+            <g class="scarf">
+              <rect x="48" y="128" width="130" height="14" rx="7" fill="#ef4444"/>
+              <rect x="140" y="132" width="14" height="32" rx="6" fill="#dc2626"/>
+            </g>
+            <!-- zzz (night) -->
+            <text class="zzz" x="176" y="60" font-family="Fredoka, sans-serif" font-size="22" font-weight="700" fill="#fff">z<tspan dx="2" dy="-12" font-size="16">z</tspan></text>
+          </svg>
         </div>
       </section>
 
       <!-- Small detail cards -->
       <section class="details">
         <div class="card mini">
-          <p class="label">🌡️ Feels like</p>
+          <span class="badge">🌡️</span>
+          <p class="label">Feels like</p>
           <p class="value" id="feels-like">--</p>
         </div>
         <div class="card mini">
-          <p class="label">💧 Humidity</p>
+          <span class="badge">💧</span>
+          <p class="label">Humidity</p>
           <p class="value" id="humidity">--</p>
         </div>
         <div class="card mini">
-          <p class="label">💨 Wind</p>
+          <span class="badge">💨</span>
+          <p class="label">Wind</p>
           <p class="value" id="wind">--</p>
         </div>
         <div class="card mini">
-          <p class="label">🔆 UV index</p>
+          <span class="badge">🔆</span>
+          <p class="label">UV index</p>
           <p class="value" id="uv">--</p>
         </div>
         <div class="card mini">
-          <p class="label">🌅 Sunrise</p>
+          <span class="badge">🌅</span>
+          <p class="label">Sunrise</p>
           <p class="value" id="sunrise">--</p>
         </div>
         <div class="card mini">
-          <p class="label">🌇 Sunset</p>
+          <span class="badge">🌇</span>
+          <p class="label">Sunset</p>
           <p class="value" id="sunset">--</p>
         </div>
         <div class="card mini">
-          <p class="label">☔ Rain chance</p>
+          <span class="badge">☔</span>
+          <p class="label">Rain chance</p>
           <p class="value" id="rain-today">--</p>
         </div>
         <div class="card mini">
-          <p class="label">🍃 Air quality</p>
+          <span class="badge">🍃</span>
+          <p class="label">Air quality</p>
           <p class="value" id="aqi">--</p>
           <p class="aqi-text" id="aqi-text"></p>
         </div>
@@ -162,7 +237,7 @@
     </main>
 
     <footer>
-      Made with HTML, CSS &amp; JavaScript · Weather data from
+      Made with 💙 using HTML, CSS &amp; JavaScript · Weather data from
       <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>
     </footer>
   </div>

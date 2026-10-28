@@ -49,6 +49,17 @@ const weatherCodes = {
   99: { text: 'Thunderstorm, hail', icon: '⛈️', night: '⛈️', theme: 'storm' }
 };
 
+// What Skye the cloud says for each kind of weather
+const mascotLines = {
+  'clear-day':   ['Sunshine time! Go play outside ☀️', 'Look at that blue sky! 😎', 'Perfect day for an ice cream 🍦'],
+  'clear-night': ['Shhh... the stars are out ✨', 'Time for sweet dreams 🌙', 'Can you spot the moon? 🔭'],
+  'cloudy':      ['Lots of my cloud friends today ☁️', 'A cozy, cloudy day 🧸', 'Can you find shapes in the clouds?'],
+  'rain':        ['Splish splash! Grab your umbrella ☔', 'Puddle-jumping weather! 🐸', 'Rainy day = cocoa day ☕'],
+  'storm':       ['Eek! Stay inside, it\'s stormy ⚡', 'Thunder is LOUD today! 🙉', 'Best day for a blanket fort 🏰'],
+  'snow':        ['Brrr! Snowman time ⛄', 'Wear your scarf, it\'s snowing! 🧣', 'Every snowflake is different ❄️'],
+  'fog':         ['Where did everything go? 🌫️', 'It\'s all misty and mysterious 👀', 'Walk carefully, it\'s foggy!']
+};
+
 const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -136,6 +147,15 @@ function setTheme(code, isDay) {
   } else {
     document.getElementById('snow').innerHTML = '';
   }
+
+  // Skye says something that matches the weather
+  let linesKey = theme;
+  if (!isDay && (theme === 'cloudy' || theme === 'fog')) {
+    linesKey = 'clear-night';
+  }
+  const lines = mascotLines[linesKey];
+  document.getElementById('mascot-says').textContent =
+    lines[Math.floor(Math.random() * lines.length)];
 
   // Change the sound to match the new weather
   currentTheme = theme;
@@ -410,7 +430,7 @@ function showWeather(place, data) {
 
   // Current weather
   document.getElementById('city-name').textContent =
-    place.name + (place.country ? ', ' + place.country : '');
+    place.name + (place.country && place.country !== place.name ? ', ' + place.country : '');
   document.getElementById('date-time').textContent = formatFullDate(current.time);
   document.getElementById('current-icon').textContent = isDay ? info.icon : info.night;
   document.getElementById('current-temp').textContent = round(current.temperature_2m) + '°';

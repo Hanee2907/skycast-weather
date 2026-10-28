@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Sun behind the cloud -->
+  <circle cx="42" cy="22" r="14" fill="#ffd23f"/>
+  <!-- Cloud -->
+  <g fill="#ffffff" stroke="#2f80ed" stroke-width="3">
+    <path d="M14 50 a10 10 0 0 1 2-19.8 a13 13 0 0 1 25-3 a11 11 0 0 1 9 22.8 z"/>
+  </g>
+  <!-- Face -->
+  <circle cx="24" cy="39" r="2.6" fill="#1f2d3d"/>
+  <circle cx="36" cy="39" r="2.6" fill="#1f2d3d"/>
+  <path d="M26 44 q4 4 8 0" fill="none" stroke="#1f2d3d" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="19" cy="44" r="2.5" fill="#ff8fab" opacity="0.7"/>
+  <circle cx="41" cy="44" r="2.5" fill="#ff8fab" opacity="0.7"/>
+</svg>
